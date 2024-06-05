@@ -20,6 +20,7 @@ export default function CardGrid({setScore}) {
 
         if (replicaSet[index].clicked === true) {
             setScore(score => 0)
+            replicaSet.forEach((item) => item.clicked = false)
         } else {
             setScore(score => score + 1)
             replicaSet[index] = {...replicaSet[index], clicked: true}

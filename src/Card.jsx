@@ -1,6 +1,8 @@
 import { useRef, useEffect } from 'react'
 
 export default function Card({text, onClick, isClicked}) {
+
+    const defaultColor = (isClicked) ? 'blue' : 'transparent'
     const cardRef = useRef(null);
     useEffect(() => {
         const handleMouseEnter = () => {
@@ -38,7 +40,7 @@ export default function Card({text, onClick, isClicked}) {
         height: '250px',
         padding: '10px',
         borderRadius: '10px',
-        background: 'transparent',
+        background: defaultColor,
         color: 'white',
         fontSize: '2rem'
     }}>{text + '\n' +isClicked.toString()}</button>
