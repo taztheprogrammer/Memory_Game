@@ -1,15 +1,22 @@
 import Card from "./Card"
 import { useState } from "react";
 
-export default function CardGrid({setScore}) {
+export default function CardGrid({setScore, size}) {
 
-    const [cards, setCards] = useState([
-        {text: 'a', clicked: false},
-        {text: 'b', clicked: false},
-        {text: 'c', clicked: false},
-        {text: 'd', clicked: false},
-        {text: 'e', clicked: false}
-    ])
+    const cardCreator = []
+
+    for (let i = 1; i < size + 1; i++) {
+        cardCreator.push({text: i, clicked: false})
+    }
+    const [cards, setCards] = useState(cardCreator)
+
+    // const [cards, setCards] = useState([
+    //     {text: 'a', clicked: false},
+    //     {text: 'b', clicked: false},
+    //     {text: 'c', clicked: false},
+    //     {text: 'd', clicked: false},
+    //     {text: 'e', clicked: false}
+    // ])
 
     const shuffle = (key) => {
 
@@ -40,6 +47,8 @@ export default function CardGrid({setScore}) {
 
         setCards(replicaSet)
       }
+
+      console.log(cards)
     return <div style={{
         // border: '1px solid red',
         marginTop: '20%',
