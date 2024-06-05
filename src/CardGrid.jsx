@@ -1,31 +1,44 @@
 import Card from "./Card"
 import { useState } from "react";
 
-export default function CardGrid() {
+export default function CardGrid({setScore}) {
 
-    const [cards, setCards] = useState(['a', 'b', 'c', 'd', 'e'])
-    const replicaSet = ['a', 'b', 'c', 'd', 'e']
+    const [cards, setCards] = useState([
+        {text: 'a', clicked: false},
+        {text: 'b', clicked: false},
+        {text: 'c', clicked: false},
+        {text: 'd', clicked: false},
+        {text: 'e', clicked: false}
+    ])
 
-    const shuffle = () => {
+    const shuffle = (key) => {
+
+        const replicaSet = [...cards]
+
+
+        const index = replicaSet.findIndex(card => card.text === key)
+
+        if (replicaSet[index].clicked === true) {
+            setScore(score => 0)
+        } else {
+            setScore(score => score + 1)
+            replicaSet[index] = {...replicaSet[index], clicked: true}
+        }
+
+
         let currentIndex = replicaSet.length;
       
-        // While there remain elements to shuffle...
         while (currentIndex != 0) {
-      
-          // Pick a remaining element...
+        
           let randomIndex = Math.floor(Math.random() * currentIndex);
           currentIndex--;
       
-          // And swap it with the current element.
           [replicaSet[currentIndex], replicaSet[randomIndex]] = [
             replicaSet[randomIndex], replicaSet[currentIndex]];
         }
 
-        console.log(replicaSet)
         setCards(replicaSet)
       }
-
-
     return <div style={{
         // border: '1px solid red',
         marginTop: '20%',
@@ -37,8 +50,8 @@ export default function CardGrid() {
         maxWidth: '750px',
         margin: '10% auto'
     }}> {
-        cards.map((text) => {
-            return <Card onClick={shuffle} key={text} text={text}></Card>
+        cards.map((item) => {
+            return <Card onClick={() => shuffle(item.text)} key={item.text} text={item.text} isClicked={item.clicked}></Card>
         })
     }
     </div>

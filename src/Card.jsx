@@ -1,8 +1,7 @@
 import { useRef, useEffect } from 'react'
 
-export default function Card({text, onClick}) {
+export default function Card({text, onClick, isClicked}) {
     const cardRef = useRef(null);
-    
     useEffect(() => {
         const handleMouseEnter = () => {
             if (cardRef.current) {
@@ -13,7 +12,8 @@ export default function Card({text, onClick}) {
 
         const handleMouseLeave = () => {
             if (cardRef.current) {
-                cardRef.current.style.backgroundColor = 'transparent';
+                cardRef.current.style.backgroundColor = isClicked ? 'blue' : 'transparent';
+                cardRef.current.style.color = 'white';
             }
         };
 
@@ -29,7 +29,7 @@ export default function Card({text, onClick}) {
                 cardRef.current.removeEventListener('mouseleave', handleMouseLeave);
             }
         };
-    }, []);
+    }, [isClicked]);
 
 
     return <button onClick={onClick}ref={cardRef} style={{
@@ -41,5 +41,5 @@ export default function Card({text, onClick}) {
         background: 'transparent',
         color: 'white',
         fontSize: '2rem'
-    }}>{text}</button>
+    }}>{text + '\n' +isClicked.toString()}</button>
 }
