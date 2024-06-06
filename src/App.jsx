@@ -15,11 +15,17 @@ export default function App() {
   //   <CardGrid size={diffSelection} setScore={setScore}></CardGrid>
   //   </div>
 
+  function Back() {
+    setDiffScreen(true);
+    setScore(0)
+  }
+
   if (diffScreen === true) {
     return <Difficulty setDiffSelection={setDiffSelection} setDiffScreen={setDiffScreen}></Difficulty>
   } else {
     return <>
     <Score scoreDisplay={score}></Score> 
+    <button onClick={() => Back()}>Back</button>
     <CardGrid size={diffSelection} setScore={setScore}></CardGrid>
     </>
   }
