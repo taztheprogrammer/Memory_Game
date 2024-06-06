@@ -1,0 +1,5 @@
+.Card {
+    background-image: url(../img/card_bg.png);
+    background-size: contain;
+    border: 1px solid rgb(44, 44, 44);
+}

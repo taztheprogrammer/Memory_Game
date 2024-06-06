@@ -18,8 +18,7 @@ export default function Difficulty({ setDiffSelection, setDiffScreen }) {
         justifyContent: 'space-evenly'
     }}>
         <h1>Hello pick your difficulty</h1>
-        <Button text={'EASY'} color={'green'} onClick={() => setDiff(6)}></Button>
+        <Button text={'EASY'} color={'green'} onClick={() => setDiff(4)}></Button>
         <Button text={'MEDIUM'} color={'orange'} onClick={() => setDiff(8)}></Button>
-        <Button text={'HARD'} color={'red'} onClick={() => setDiff(12)}></Button>
     </div>
 }
