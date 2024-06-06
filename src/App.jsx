@@ -7,16 +7,22 @@ export default function App() {
 
   const [score, setScore] = useState(0)
   const [diffSelection, setDiffSelection] = useState(4)
-  const difficultySelected = false;
+  const [diffScreen, setDiffScreen] = useState(true);
   
 
-  return <CardGrid size={diffSelection} setScore={setScore}></CardGrid>
+  // return <div>
+  //   <Score scoreDisplay={score}></Score>
+  //   <CardGrid size={diffSelection} setScore={setScore}></CardGrid>
+  //   </div>
 
-  // if (difficultySelected === false) {
-  //   return <Difficulty></Difficulty>
-  // } else {
-  //   return <CardGrid size={selection} setScore={setScore}></CardGrid>
-  // }
+  if (diffScreen === true) {
+    return <Difficulty setDiffSelection={setDiffSelection} setDiffScreen={setDiffScreen}></Difficulty>
+  } else {
+    return <>
+    <Score scoreDisplay={score}></Score> 
+    <CardGrid size={diffSelection} setScore={setScore}></CardGrid>
+    </>
+  }
     
   {/* <Score scoreDisplay={score}></Score> 
   <CardGrid setScore={setScore}></CardGrid> */}

@@ -48,7 +48,7 @@ export default function CardGrid({setScore, size}) {
         setCards(replicaSet)
       }
 
-      console.log(cards)
+    //   console.log(cards)
     return <div style={{
         // border: '1px solid red',
         marginTop: '20%',

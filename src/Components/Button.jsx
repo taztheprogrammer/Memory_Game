@@ -1,5 +1,5 @@
-export default function Button({text, color}) {
-    return <button style={{
+export default function Button({text, color, onClick}) {
+    return <button onClick={onClick} style={{
         width: '100px',
         height: '50px',
         backgroundColor: color,
